@@ -119,6 +119,8 @@ final class CameraConfigurationManager {
     }
 
     parameters.setPreviewSize(cameraResolution.x, cameraResolution.y);
+    // HACK for glass http://stackoverflow.com/a/19257078/1291812
+    parameters.setPreviewFpsRange(30000,30000);
     camera.setParameters(parameters);
   }
 
@@ -133,6 +135,8 @@ final class CameraConfigurationManager {
   void setTorch(Camera camera, boolean newSetting) {
     Camera.Parameters parameters = camera.getParameters();
     doSetTorch(parameters, newSetting, false);
+    // HACK for glass http://stackoverflow.com/a/19257078/1291812
+    parameters.setPreviewFpsRange(30000,30000);
     camera.setParameters(parameters);
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
     boolean currentSetting = prefs.getBoolean(PreferencesActivity.KEY_FRONT_LIGHT, false);
