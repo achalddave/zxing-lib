@@ -90,10 +90,6 @@ public final class ViewfinderView extends View {
 
     // Draw the exterior (i.e. outside the framing rect) darkened
     paint.setColor(resultBitmap != null ? resultColor : maskColor);
-    canvas.drawRect(0, 0, width, frame.top, paint);
-    canvas.drawRect(0, frame.top, frame.left, frame.bottom + 1, paint);
-    canvas.drawRect(frame.right + 1, frame.top, width, frame.bottom + 1, paint);
-    canvas.drawRect(0, frame.bottom + 1, width, height, paint);
 
     if (resultBitmap != null) {
       // Draw the opaque result bitmap over the scanning rectangle
@@ -121,27 +117,10 @@ public final class ViewfinderView extends View {
       } else {
         possibleResultPoints = new ArrayList<ResultPoint>(5);
         lastPossibleResultPoints = currentPossible;
-        paint.setAlpha(CURRENT_POINT_OPACITY);
-        paint.setColor(resultPointColor);
-        synchronized (currentPossible) {
-          for (ResultPoint point : currentPossible) {
-            canvas.drawCircle(frameLeft + (int) (point.getX() * scaleX),
-                              frameTop + (int) (point.getY() * scaleY),
-                              POINT_SIZE, paint);
-          }
-        }
       }
       if (currentLast != null) {
         paint.setAlpha(CURRENT_POINT_OPACITY / 2);
         paint.setColor(resultPointColor);
-        synchronized (currentLast) {
-          float radius = POINT_SIZE / 2.0f;
-          for (ResultPoint point : currentLast) {
-            canvas.drawCircle(frameLeft + (int) (point.getX() * scaleX),
-                              frameTop + (int) (point.getY() * scaleY),
-                              radius, paint);
-          }
-        }
       }
 
       // Request another update at the animation interval, but only repaint the laser line,
