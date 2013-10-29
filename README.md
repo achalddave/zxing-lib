@@ -1,8 +1,8 @@
 # Branches
 
-[master](https://github.com/achalddave/zxing-lib/): Any patches I've added to zxing-lib to fix bugs. No features should be changed.
-[glass](https://github.com/achalddave/zxing-lib/tree/glass): Patches to zxing-lib for glass. No features should be changes.
-[glass_personal](https://github.com/achalddave/zxing-lib/tree/glass_personal): Patches for a Glass app I'm working on. Mostly for personal use.
+* [master](https://github.com/achalddave/zxing-lib/): Any patches I've added to zxing-lib to fix bugs. No features should be changed.
+* [glass](https://github.com/achalddave/zxing-lib/tree/glass): Patches to zxing-lib for glass. No features should be changes.
+* [glass_personal](https://github.com/achalddave/zxing-lib/tree/glass_personal): Patches for a Glass app I'm working on. Mostly for personal use.
 
 # ZXing Barcode Scanner Android library
 
