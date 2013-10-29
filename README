@@ -1,0 +1,3 @@
+# Zxing lib for glass
+
+Patches [zxing-lib](https://github.com/kennydude/zxing-lib) to work with Glass.
