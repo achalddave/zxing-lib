@@ -1,3 +1,10 @@
+# Zxing lib for glass
+
+Patches [zxing-lib](https://github.com/kennydude/zxing-lib) to work with Glass.
+
+===
+Original README:
+
 # ZXing Barcode Scanner Android library
 
 This allows for you to directly embed ZXing into your application **properly**.
