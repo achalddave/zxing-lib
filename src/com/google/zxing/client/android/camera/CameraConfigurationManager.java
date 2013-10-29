@@ -216,27 +216,14 @@ final class CameraConfigurationManager {
     float screenAspectRatio = (float) screenResolution.x / (float) screenResolution.y;
 
     float diff = Float.POSITIVE_INFINITY;
+    float maxArea = 0;
     for (Camera.Size supportedPreviewSize : supportedPreviewSizes) {
-      int realWidth = supportedPreviewSize.width;
-      int realHeight = supportedPreviewSize.height;
-      int pixels = realWidth * realHeight;
-      if (pixels < MIN_PREVIEW_PIXELS || pixels > MAX_PREVIEW_PIXELS) {
-        continue;
-      }
-      boolean isCandidatePortrait = realWidth < realHeight;
-      int maybeFlippedWidth = isCandidatePortrait ? realHeight : realWidth;
-      int maybeFlippedHeight = isCandidatePortrait ? realWidth : realHeight;
-      if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
-        Point exactPoint = new Point(realWidth, realHeight);
-        Log.i(TAG, "Found preview size exactly matching screen size: " + exactPoint);
-        return exactPoint;
-      }
-      float aspectRatio = (float) maybeFlippedWidth / (float) maybeFlippedHeight;
-      float newDiff = Math.abs(aspectRatio - screenAspectRatio);
-      if (newDiff < diff) {
-        bestSize = new Point(realWidth, realHeight);
-        diff = newDiff;
-      }
+        int w = supportedPreviewSize.width, h = supportedPreviewSize.height;
+        float currArea = w * h;
+        if (currArea > maxArea) {
+            maxArea = currArea;
+            bestSize = new Point(w, h);
+        }
     }
 
     if (bestSize == null) {
