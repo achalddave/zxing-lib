@@ -1,6 +1,7 @@
-# Zxing lib for glass
+# Custom zxing lib for glass
 
-Patches [zxing-lib](https://github.com/kennydude/zxing-lib) to work with Glass.
+Patches [zxing-lib](https://github.com/kennydude/zxing-lib) to work with Glass. Also contains various changes for a Glass app I'm working on.
+
 
 ===
 Original README:
